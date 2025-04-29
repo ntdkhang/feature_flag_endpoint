@@ -10,10 +10,20 @@ path = "src/lib.rs"
 path = "src/main.rs"
 name = "feature_flag_endpoint"
 
+
+[[bench]]
+name = "benchmark_check_flag"
+harness = false
+
+
 [dependencies]
 serde = { version = "1", features = ["derive"] }
 actix-web = "4.10"
 tokio = { version = "1", features = ["full"] }
+criterion = "0.5"
+
 
 [dev-dependencies]
 reqwest = { version = "0.11", features = ["json"] }
+
+

@@ -15,18 +15,19 @@ pub fn run(listener: TcpListener) -> Result<Server, std::io::Error> {
     Ok(server)
 }
 
-async fn check_flag(form: web::Form<GetFlagForm>) -> impl Responder {
+async fn check_flag(form: web::Query<GetFlagQuery>) -> impl Responder {
     let returned_user = FeatureFlagData {
         user: form.user.clone(), enabled: form.user == "khang"
     };
 
 
     web::Json(returned_user)
+    // format!("name = {}; enabled = {}", returned_user.user, returned_user.enabled)
 }
 
 
 #[derive(Deserialize)]
-pub struct GetFlagForm {
+pub struct GetFlagQuery {
     user: String,
 }
 
