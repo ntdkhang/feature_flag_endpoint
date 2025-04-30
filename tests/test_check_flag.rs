@@ -10,7 +10,7 @@ async fn test_check_flag_enabled() {
     let flag = client
         .get(format!("{}/check_flag", address))
         .header("Content-Type", "application/x-www-form-urlencoded")
-        .body("user=khang")
+        .query(&[("user", "khang")])
         .send()
         .await
         .expect("Failed to get response")
